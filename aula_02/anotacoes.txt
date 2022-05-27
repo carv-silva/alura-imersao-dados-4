@@ -1,0 +1,69 @@
+dados["Valor"][0] --> pega o primeiro dado da coluna (valor)
+
+dados["Valor"][0].split() --> separa os valores da string numa array ex: ['R$', '7.000.000']
+
+dados["Valor"].str.split() --> separa a coluna Valores em um array para cada linha
+
+dados["Valor"].str.split(expand = True) --> cria uma dataframe nova coms os dados organizado(separa
+os dados onde tem espaço)
+
+dados["Valor"].str.split(expand = True)[0].unique() --> vai retornar se a coluna 0 tem somente R$
+ex: array(['R$'], dtype=object)
+
+caso nao tenha so esse tipo de dados ela mostra (no exemplo acima ele so tem um tipo de dado)
+dados["Valor"].str.split(expand = True)[1].unique()
+ex: array(['7.000.000', '3.700.000', '380.000', ..., '553.000', '951.000',
+       '2.200'], dtype=object)
+
+len(dados["Valor"].str.split(expand = True)[1].unique()) --> verifica qual o tamanho do array de
+preços iguais
+
+dados[["Valor", "Bairro"]] --> pegar duas coluna(fatias) do dataframe
+
+dados[["Moeda", "Valor_anuncio", "Tipo_anuncio"]] = dados["Valor"].str.split(expand = True)
+dados.head()
+no comando acima pegamos e fatiamos o tipos de dados da coluna "Valor" para uma nova dataframe com
+os campos moeda Valor_anuncio e Tipo_anuncio
+
+dados_vendas["Valor_anuncio"].str.replace(".", "").astype(float) --> tranforma os valores da coluna
+Valor_anuncio em float e tira os .
+
+dados_vendas["Valor_anuncio_float"] = dados_vendas["Valor_anuncio"].str.replace(".", "").astype(float)
+faz uma coluna nova com valores float
+
+# Desafio
+
+Criar uma escala de valores em milhoes
+
+
+----------------------------
+
+pd.set_option("display.precision", 2) --> vai rodar a dataframe sua com precisao de 2  casa decimal
+dados_vendas.describe()
+dados_vendas.describe(include = 'all') --> descreve geral sobre o dataframe
+
+dados_vendas[["Rua", "Bairro","Cidade"]].describe() --> aqui ele vai dar info so dessas colunas
+
+# biblioteca seaborn (usar ela dps)
+https://seaborn.pydata.org/
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(10, 8)) --> tamanho do grafico
+ax = sns.histplot(data = dados_vendas, x = "Valor_anuncio_float", kde = True) --> cria um grafio da coluna Valor_anuncio_float
+
+ax.set_title("Histograma Valor Imóvel") --> coloca titulo nos graficos
+plt.xlim((-50, 10000000)) --> esticar o grafico
+sns.histplot(data = dados_vendas, x = "Valor_anuncio_float", kde = True) --> esse kde cria uma curva
+seguindo o grafico
+
+
+Desafio Aula 2
+Criar uma escala de valores em milhões
+Deixar o gráfico do histograma de valores legível (alterar labels, cores, título, escala)
+Preço do metro quadrado por bairro e plotar em um gráfico ideal
+Explorar as bibliotecas de visualizações e colocar as suas conclusão
+Pesquisar um visualização para analisar os quartis, mediana e outliers
+
+
