@@ -1,0 +1,11 @@
+import pandas as pd
+ibge_sp = pd.read_csv(
+    'https://gist.githubusercontent.com/tgcsantos/85f8c7b0a2edbc3e27fcad619b37d886/raw/a4954781e6bca9cb804062a3eea0b3b84679daf4/Basico_SP1.csv',
+    encoding='ISO-8859-1',
+    sep=';', thousands='.', decimal=','
+)
+ibge_sp.dropna(how='all', axis=1, inplace=True)
+ibge_sp.head()
+
+
+esse bloco de codigo acima formata uma base suja que nao esteja no formado utf8(brasil)
