@@ -1,0 +1,81 @@
+as bases de dados vem sempre suja
+
+$ dados.head() --> imprimi as 5 primeiras linhas
+
+dados --> mostra quantas linhas e colunas tem
+
+dados.sample() --> vai pega aleatoriamente alguma linha da coluna
+
+dados.sample(10) --> pega as 10 linhas aleatoriamente alguma linha da coluna
+
+dataframe --> tabela que aparece na tela)
+
+type(dados) --> retorna o tipo de dados que esta mexendo
+
+dados["Bairro"] --> retorna os 5 primeiro bairros
+
+dados["Bairro"][6522] --> pega o bairro da posição 6522(linha)
+
+dados.info() --> retorna algumas informação da tabela
+
+obs: para tirar a media o dado nao pode ser obj
+
+dados.Metragem.mean() --> tira a media ta coluna metragem
+obs: neste metodo acima ele pega a tabela com . ex: dados.tabela
+o metodo usado é o ["tabela"] ex: dados["Metragem"].mean()
+
+Ex: media do bairro vila mariana
+solução:
+
+dados["Bairro"] == "Vila Mariana" --> aqui vc vai verificar se tem bairro vila mariana
+
+(dados["Bairro"] == "Vila Mariana") * 1 --> aqui vc vai verificar se é 0(false) ou 1(true)
+
+sum((dados["Bairro"] == "Vila Mariana")) --> aqui vc vai somar todos os imoveis da vila mariana e
+tem valor 1 (true) o resultado é 184
+
+tem_imoveis_vila = (dados["Bairro"] == "Vila Mariana") --> aqui ele vai guarda na variavel
+uma tabela com 0 e 1 (true e false)
+
+dados[tem_imoveis_vila] --> aqui ele mostra todos os imoveis da vila mariana(os 184)
+
+imoveis_vila_mariana = dados[tem_imoveis_vila] --> aqui ele guarda na variavel os imoveis da vila
+mariana
+
+imoveis_vila_mariana["Metragem"].mean() --> retorna a media da coluna com todos imoveis da vila
+mariana
+
+dados["Bairro"].value_counts() --> retorna uma tabela onde o indexé os bairros e quantos imoveis tem
+neles e no final da tabela mostra qnts bairros tem no total
+
+# fazendo grafico com o panda
+
+numeros_imoveis_bairro = dados["Bairro"].value_counts() --> guarda o numeros de casas no bairros
+
+numeros_imoveis_bairro.plot.hist() --> gera um grafico (histograma) com numeros de bairros
+
+numeros_imoveis_bairro.plot.bar() --> gera um grafico (barra) com numeros de bairros
+
+
+numeros_imoveis_bairro.head(10).plot.bar() --> gera o grafico com os 10 primeiro bairros que
+tem mais casas
+
+
+Desafios:
+1 - Realizaar a media da metragem para cada um dos bairros
+2 - 2 forma de selecionar os dados por bairro(consutlar os mestodos na doc do panda)
+3 - explorar alguns graficos na doc e aplica nas demais colunas do dataframe, tentar alguma conclusao
+4 - pegar outras estatiscas dos dados, media, mediana, mim, max
+5 - descobir quais os barrios nao tem nome de rua
+
+Desafios:
+
+1 - Realizar a média da metragem para cara um dos bairros (Paulo)
+
+2 - 2 formas de selecionar os dados por bairro (consultar os métodos na documentação do pandas) (Thiago)
+
+3 - Explorar alguns gráficos na documentação e aplicar nas demais colunas do DF, tentar colocar alguma conclusão (Thiago)
+
+4 - Pegar outros estatísticas dos dados, média, mediana, mim, max (Vivi)
+
+5 - Descobrir quais são os bairros que não tem nome de Rua. (Vivi)
